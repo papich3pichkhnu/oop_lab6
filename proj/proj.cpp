@@ -9,6 +9,7 @@
 #include "Exam.h"
 #include "Vector.h"
 #include <time.h>
+#include <algorithm>
 using namespace std;
 //task 11
 void showSquaredAge(Student s)
