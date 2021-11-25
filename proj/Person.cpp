@@ -34,3 +34,9 @@ int Person::getAge() { return this->age;}
 int Person::getHeight() { return this->height;}
 string Person::getColorOfEyes() { return this->colorOfEyes; }
 string Person::getColorOfHair() { return this->colorOfHair; }
+
+ostream& operator<<(std::ostream& out, Person& d)
+{
+	out << d.getFullName();
+	return out;
+}

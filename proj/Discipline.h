@@ -27,6 +27,7 @@ public:
 	int getNumberOfControlWorks();
 	void printToFile();
 	static Discipline readFromFile();
+	friend ostream& operator<<(std::ostream& out, Discipline& d);
 	
 };
 

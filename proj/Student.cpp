@@ -26,6 +26,11 @@ Student::Student() :Student("Last name","First name","Middle name",
 
 void Student::setFaculty(Faculty* _sFaculty) { this->sFaculty = _sFaculty; }
 
+Faculty* Student::getFaculty()
+{
+	return this->sFaculty;
+}
+
 void Student::printToFile()
 {
 	ofstream out("studfile.txt", ios::out);

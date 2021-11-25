@@ -25,3 +25,9 @@ void Exam::takeExam(string date)
 		cout << "Great work! Continue your study" << endl;
 	}
 }
+
+ostream& operator<<(std::ostream& out, Exam& d)
+{
+	out << d.discipline << " " << d.date;
+	return out;
+}

@@ -29,5 +29,6 @@ public:
 	~Exam();
 	Exam(Faculty*, Department*, Student*, SeniorLecturer*, Discipline*);
 	void takeExam(string);
+	friend ostream& operator<<(std::ostream& out, Exam& d);
 };
 

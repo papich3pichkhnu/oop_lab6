@@ -63,3 +63,8 @@ Discipline Discipline::readFromFile()
 	in.close();
 	return obj;
 }
+
+ostream& operator<<(std::ostream& out, Discipline& d)
+{
+	out << d.name << " "; return out;
+}

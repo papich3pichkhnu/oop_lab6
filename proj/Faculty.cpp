@@ -75,7 +75,12 @@ int* Faculty::myAlloc()
 	return arr;
 }
 void Faculty::enrollStudent(Student* s)
-{
+{		
+	if (s->getFaculty() != nullptr)
+	{
+		cout << "Student " << s->getFullName() << " is already enroled on the faculty " << s->getFaculty()->abbreviature << endl;
+		return;
+	}
 	this->students.push_back(s);
 	s->setFaculty(this);
 	cout << "Student " << s->getFullName()<< " was enroled on the faculty " << this->abbreviature<<endl;
@@ -103,6 +108,11 @@ void Faculty::deductStudent(Student* s)
 
 void Faculty::addDepartment(Department* s)
 {
+	if (s->getFaculty() != nullptr)
+	{
+		cout << "Department " << s->name << " is already in list of the faculty " << s->getFaculty()->abbreviature << endl;
+		return;
+	}
 	this->departments.push_back(s);
 	s->setFaculty(this);
 	cout << "Department " << s->name << " was added in list of departments of the faculty " << this->abbreviature << endl;
@@ -133,13 +143,104 @@ Student* findStudent(string _ln, string _fn, string _mn)
 	return nullptr;
 }
 vector<Student*> Faculty::getStudents() { return (this->students); }
-/*vector<Discipline*> Faculty::getDisciplines() { return (this->disciplines); }
-void Faculty::createDisciplines()
+Faculty& Faculty::operator++()
 {
-	int n = 5;
-	for (int i = 1; i <= 5; i++)
+	++numOfSpecs;
+	return *this;
+}
+Faculty Faculty::operator++(int)
+{
+	Faculty* temp = this;
+	++(*(this));
+	return *temp;
+	
+}
+Faculty& Faculty::operator--()
+{
+	--numOfSpecs;
+	return *this;
+	
+}
+Faculty Faculty::operator--(int)
+{
+	Faculty* temp = this;
+	--(*(this));
+	return *temp;
+}
+
+Faculty Faculty::operator+(Student *s)
+{
+	Faculty* fac=this;	
+	fac->enrollStudent(s);
+	return *fac;
+}
+
+Faculty Faculty::operator-(Student* s)
+{
+	Faculty* fac =this;
+	fac->deductStudent(s);
+	return *fac;
+}
+
+Faculty Faculty::operator+(Department* d)
+{
+	Faculty* fac = this;
+	fac->addDepartment(d);
+	return *fac;
+}
+
+Faculty Faculty::operator-(Department* d)
+{
+	Faculty* fac = this;
+	fac->deleteDepartment(d);
+	return *fac;
+}
+
+Faculty Faculty::operator*(int a)
+{
+	Faculty fac = *this;
+	fac.numOfSpecs *= a;
+	return fac;
+}
+
+Faculty& Faculty::operator+=(Student* s)
+{
+	*(this) = *(this) + s;
+	return *(this);
+}
+
+Faculty& Faculty::operator-=(Student* s)
+{
+	*(this) = *(this) - s;
+	return *(this);
+}
+
+Faculty& Faculty::operator+=(Department* s)
+{
+	*(this) = *(this) + s;
+	return *(this);
+}
+
+Faculty& Faculty::operator-=(Department* s)
+{
+	*(this) = *(this) - s;
+	return *(this);
+}
+
+
+Faculty& Faculty::operator*=(int s)
+{
+	*(this) = *(this) * s;
+	return *(this);
+}
+
+Department* Faculty::operator[](int index)
+{
+	if (index >= this->departments.size())
 	{
-		Discipline* d = new Discipline(this->facultyName+"_Discipline" + std::to_string(i), "Cathedra", "Exam", 10, 10, 10);
-		this->disciplines.push_back(d);
+		throw runtime_error("Array index out of bound, exiting ");
 	}
-}*/
+	else return this->departments[index];
+}
+
+

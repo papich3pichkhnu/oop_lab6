@@ -29,5 +29,7 @@ public:
 	string getColorOfEyes();
 	string getColorOfHair();
 	virtual void selfDescribe()=0;
+	friend ostream& operator<<(std::ostream& out, Person& d);
+
 };
 

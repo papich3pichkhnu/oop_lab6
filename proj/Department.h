@@ -12,12 +12,13 @@ class Faculty;
 class Discipline;
 class Department
 {
+private:
+	Faculty* f;
 public:
 	static int count;
 	string name;
 	vector<Lecturer*> lecturers;
-	Lecturer* headOfDepartment;
-	Faculty* f;
+	Lecturer* headOfDepartment;	
 	Department(string _n);
 	~Department();
 	Department();
@@ -25,5 +26,8 @@ public:
 	void deductLecturer(Lecturer* l);
 	void setHeadOfDepartment(Lecturer* l);
 	void setFaculty(Faculty* f);
+	Faculty* getFaculty();
+	void show();
+	friend ostream& operator<<(std::ostream& out, Department& d);
 };
 

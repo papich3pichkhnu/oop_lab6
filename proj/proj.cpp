@@ -7,6 +7,7 @@
 #include "AssociateProfessor.h"
 #include "GraduateStudent.h"
 #include "Exam.h"
+#include "Vector.h"
 #include <time.h>
 using namespace std;
 //task 11
@@ -329,20 +330,43 @@ int main()
 		p->selfDescribe();
 	}
 	cout << "/****/" << endl;
-	Student* AVR_copy =dynamic_cast<Student*>(people[0]);
+	/*Student* AVR_copy = dynamic_cast<Student*>(people[0]);
 	AVR_copy->showFaculty();
-	cout << "/****/" << endl << endl;
-	try {
+	cout << "" << endl << endl;*/
+	/*try {
 		FIT->deductStudent(AVR);
 		AVR->showFaculty();
 	}
 	catch (runtime_error ex)
 	{
-		cout << "/****/" << endl;
+		cout << "/" << endl;
 		cout << ex.what() << endl;
-		cout << "/****/" << endl;
+		cout << "/" << endl;
 	}
-
-	
-
+	*/
+	FIT->show();
+	(*(FIT))++;
+	FIT->show();
+	*(FIT) += AVR;
+	*(FIT) -= AVR;
+	*(FIT) *= 2;
+	((*(FIT))[0])->show();
+	*(FIT) += AVR;
+	AVR->showFaculty();
+	cout << Faculty::getMax(1, 2)<<endl;
+	cout << (*KIIS) << endl;
+	Vector<Person*, 5> vec;
+	vec[0] = AVR;
+	vec[1] = ARV;
+	vec[2] = LSM;
+	vec[3] = POO;
+	vec[4] = DDO;
+	vec.print();
+	cout << endl;
+	vec.reverse();
+	vec.print();
+	cout << endl;
+	vec.clear();
+	vec.print();
+	cout << endl;
 }

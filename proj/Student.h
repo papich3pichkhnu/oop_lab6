@@ -17,6 +17,7 @@ class Person;
 		Student(string _lName, string _fName, string _mName);
 		Student(string _ln, string _fn, string _mn, int _a, int _h, string _coe, string _coh);	
 		void setFaculty(Faculty* _sFaculty);
+		Faculty* getFaculty();
 		static Student* generate();
 		static Student readFromFile();
 		void printToFile();
